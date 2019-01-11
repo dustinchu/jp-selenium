@@ -6,16 +6,7 @@ import time
 from bs4 import BeautifulSoup
 import unicodedata
 
-# def get():
-    # opt=webdriver.ChromeOptions()
-    # opt.set_headless()
-    # driver=webdriver.Chrome(options=opt)
-    # driver.get("https://www3.nhk.or.jp/news/easy/")
-    # print(driver.page_source)
-    # time.sleep(5)
 
-    #
-    # return 'ok'
 
 def test():
     url = "https://asheville.craigslist.org/search/fua"
@@ -28,13 +19,15 @@ def test():
     i =0
     for post in soup.find_all('li', "result-row"):
         i+=1
-        print(post ,"第=====",i,"次")
+        print(post ,"第=====", i, "次")
         for post_content in post.find_all("a", "result-image gallery"):
             print(post, "aaaaaaaaaaaaaaaaaa=====", i, "次")
             print(post_content['href'])
             for pic in post_content.find_all("img"):
                 print(pic['src'])
     return "testok"
+
+
 def get():
 
     url = "https://www3.nhk.or.jp/news/easy/"
@@ -127,7 +120,7 @@ def get():
                                 bodyStr += string + " "
                     #如果只要<ruby> 可以使用這樣
                     # if bodyTtile.ruby:
-
+                print(bodyStr)
                 #時間
                 for bodyTime in bodyItem.find_all('time', "time"):
                     if bodyTime.string:
@@ -138,11 +131,11 @@ def get():
                         print("內容URL==", bodyUrl['href'])
 
             for bodyImg in body.find_all('figure', "news-list-item__image"):
-                print(bodyImg)
+                # print(bodyImg)
                 if bodyImg.img:
                     print("內容圖片==", bodyImg.img['src'])
 
-            print(bodyStr)
+
     driver.close()
     return "ok"
 
@@ -153,23 +146,6 @@ def is_japanese(string):
             return True
         return False
 
-    # aTages= soup.select('section[class="top-news-list"]')
-    # print(aTages)
-
-    # for section in soup.find_all('section',limit=1):
-    #     print()
-
-
-    # topList =soup.select('h1[class="news-list-item__title is-pickup"]')
-    # print(topList)
-    # print(soup.select('h1[class="news-list-item__title is-pickup"]'))
-
-
-
-    # a_tags=soup.html.find_all("title")
-    # print(a_tags)
-
-    return 'ok'
 
 
 html_doc ="""
